@@ -258,7 +258,7 @@ class gen_trans_type {
     dt2 = dt2_;
     prec = prec_;
   }
-  ~gen_trans_type() { delete [] name;}
+  virtual ~gen_trans_type() { delete [] name;}
   bool operator==(const gen_trans_type &) const;
   inline bool operator==(const gen_trans_type &rhs) {
     if(rhs.isign == isign && rhs.is_set == is_set && rhs.dt1 == dt1 &&
@@ -511,10 +511,7 @@ typedef long (*doplan_type)(const int *n,int howmany,Type1 *in,const int *inembe
       is_empty = rhs.is_empty;
     }
   
-  ~trans_type1D()
-    {
-      delete [] name;
-    }
+  ~trans_type1D() {}
 
 };
 
