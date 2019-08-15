@@ -526,6 +526,7 @@ class stage {
  protected :
   //  int mo1[3],mo2[3];
  public :
+  virtual ~stage() {}
   int stage_prec;
   //  bool inplace;
   int dt1,dt2;

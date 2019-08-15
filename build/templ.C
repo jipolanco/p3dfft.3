@@ -871,13 +871,11 @@ template <class Type1,class Type2> int transplan<Type1,Type2>::find_m(int *mo1,i
   //  is_trans = is_mpi = true;
 }
 
-/*
 template <class Type1,class Type2> trans_MPIplan<Type1,Type2>::~trans_MPIplan()
 {
-  delete [] SndCnts,SndStrt,RcvCnts,RcvStrt;
-  delete grid1,grid2;
+  // delete [] SndCnts,SndStrt,RcvCnts,RcvStrt;
+  // delete grid1,grid2;
 }
-*/
 
 template <class Type> MPIplan<Type>::MPIplan(const grid &gr1,const grid &gr2,MPI_Comm mpicomm_,int d1_,int d2_, int prec_)  
 {
