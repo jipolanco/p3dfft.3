@@ -316,7 +316,7 @@ void inv_mo(int mo[3],int imo[3]);
 	curr_stage = init_MPIplan(*tmpgrid0,*tmpgrid1,splitcomm,d1,d2,dt_prev,prec);
 	curr_stage->kind = MPI_ONLY;
 	Stages = prev_stage = curr_stage;
-	delete [] tmpgrid0;
+	delete tmpgrid0;
 	tmpgrid0 = tmpgrid1;
       }
 
@@ -589,12 +589,13 @@ void inv_mo(int mo[3],int imo[3]);
 template<class Type1,class Type2> transform3D<Type1,Type2>::~transform3D()
 {
   stage *pnext,*p=Stages;
-  if(p)
-    while(pnext = p->next) {
-      delete p;
-      p = pnext;
-    }
-  delete grid1,grid2;
+  while(p) {
+    pnext = p->next;
+    delete p;
+    p = pnext;
+  }
+  delete grid1;
+  delete grid2;
 }
 
 int excl(int a,int b)
@@ -873,8 +874,8 @@ template <class Type1,class Type2> int transplan<Type1,Type2>::find_m(int *mo1,i
 
 template <class Type1,class Type2> trans_MPIplan<Type1,Type2>::~trans_MPIplan()
 {
-  // delete [] SndCnts,SndStrt,RcvCnts,RcvStrt;
-  // delete grid1,grid2;
+  delete trplan;
+  delete mpiplan;
 }
 
 template <class Type> MPIplan<Type>::MPIplan(const grid &gr1,const grid &gr2,MPI_Comm mpicomm_,int d1_,int d2_, int prec_)  
@@ -973,8 +974,12 @@ template <class Type> MPIplan<Type>::MPIplan(const grid &gr1,const grid &gr2,MPI
 
 template <class Type> MPIplan<Type>::~MPIplan()
 {
-  delete [] SndCnts,SndStrt,RcvCnts,RcvStrt;
-  delete grid1,grid2;
+  delete [] SndCnts;
+  delete [] SndStrt;
+  delete [] RcvCnts;
+  delete [] RcvStrt;
+  delete grid1;
+  delete grid2;
 }
 
 
