@@ -690,6 +690,7 @@ class Plan {
  public :
   long libplan_in,libplan_out,libplan_inout;
   Plan() {};
+  virtual ~Plan() {}
   };
 
 template <class Type1,class Type2> class Plantype : public Plan
@@ -747,7 +748,7 @@ template <class Type1,class Type2> class Plantype : public Plan
       cout << "Error in Plantype: precisions don't match" << endl;
   }
   inline Plantype(const Plantype &rhs);
-  inline ~Plantype();
+  inline ~Plantype() {}
   //template <class _TypeIn,class _TypeOut> 
   friend void transplan<Type1,Type2>::find_plan(trans_type1D<Type1,Type2> *type); 
  //  template <class Type1,class Type2> friend  long trans_MPIplan<Type1,Type2>::find_plan(trans_type1D<Type1,Type2> *type);
