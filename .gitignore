@@ -1,0 +1,10 @@
+# Configure products
+Makefile
+config.log
+config.status
+p3dfft3config.h
+stamp-h1
+
+# Build objects
+*.a
+*.o
