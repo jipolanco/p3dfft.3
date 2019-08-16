@@ -857,7 +857,9 @@ void cleanup()
     it3 = stored_trans3D.erase(it3);
   }
 
-    
+#ifdef FFTW
+  fftw_cleanup();
+#endif
 
 }
 
