@@ -868,16 +868,11 @@ void cleanup()
   }
 
 #ifdef FFTW
-<<<<<<< HEAD
-  fftw_cleanup();
-#endif
-=======
   //  printf("Cleaning FFTW\n");
   fftw_cleanup();
 #endif    
 
   //  printf("Done Cleaning\n");
->>>>>>> master
 
 }
 
