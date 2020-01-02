@@ -57,7 +57,7 @@ def main():
 		elif o == '-p':
 			#perf = True
 			#cflags += ['-O3']
-                        pass
+			pass
 		elif o == '-f':
 			extra = a
 		else:

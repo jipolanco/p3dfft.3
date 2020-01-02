@@ -511,7 +511,10 @@ typedef long (*doplan_type)(const int *n,int howmany,Type1 *in,const int *inembe
       is_empty = rhs.is_empty;
     }
   
-  ~trans_type1D() {}
+  ~trans_type1D()
+    {
+      //      delete [] name;
+    }
 
 };
 
@@ -562,8 +565,8 @@ template <class Type> class MPIplan : public stage {
  public :
 
   MPIplan(const grid &gr1,const grid &gr2,MPI_Comm comm,int d1,int d2, int prec_);
-  MPIplan() {};
-  ~MPIplan();
+  //MPIplan() {};
+   ~MPIplan();
   void exec(char *in,char *out);
   template <class Type1,class Type2> friend class trans_MPIplan;
   };
@@ -595,8 +598,7 @@ template <class Type1,class Type2>   class transplan : public stage {
   transplan(const grid &gr1,const grid &gr2,int type_ID,int d); //, bool inplace_); 
   transplan() {};
   ~transplan() {
-    delete grid1;
-    delete grid2;
+    delete grid1,grid2; 
   };
   //  void reorder_in(Type1 *in,int mo1[3],int mo2[3],int dims1[3]);
   void reorder_out(Type2 *in,Type2 *out,int mo1[3],int mo2[3],int dims1[3]);
